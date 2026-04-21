@@ -36,6 +36,8 @@
 #include "conversion_p.h"
 #include "trace_p.h"
 
+#include "compat.h"
+
 #include <QContactGender>
 #include <QContactName>
 #include <QContactDisplayLabel>
@@ -1801,7 +1803,7 @@ static bool updateStorageTypes(QSqlDatabase &database)
             const quint32 detailId(query.value(0).value<quint32>());
             const QString originalSubTypes(query.value(1).value<QString>());
 
-            QStringList subTypeNames(originalSubTypes.split(QLatin1Char(';'), QString::SkipEmptyParts));
+            QStringList subTypeNames(originalSubTypes.split(QLatin1Char(';'), compat::SkipEmptyParts));
             QStringList subTypeValues;
             foreach (int subTypeValue, Address::subTypeList(subTypeNames)) {
                 subTypeValues.append(QString::number(subTypeValue));
@@ -1949,7 +1951,7 @@ static bool updateStorageTypes(QSqlDatabase &database)
             const QString originalProtocol(query.value(1).value<QString>());
             const QString originalSubTypes(query.value(2).value<QString>());
 
-            QStringList subTypeNames(originalSubTypes.split(QLatin1Char(';'), QString::SkipEmptyParts));
+            QStringList subTypeNames(originalSubTypes.split(QLatin1Char(';'), compat::SkipEmptyParts));
             QStringList subTypeValues;
             foreach (int subTypeValue, OnlineAccount::subTypeList(subTypeNames)) {
                 subTypeValues.append(QString::number(subTypeValue));
@@ -2000,7 +2002,7 @@ static bool updateStorageTypes(QSqlDatabase &database)
             const quint32 detailId(query.value(0).value<quint32>());
             const QString originalSubTypes(query.value(1).value<QString>());
 
-            QStringList subTypeNames(originalSubTypes.split(QLatin1Char(';'), QString::SkipEmptyParts));
+            QStringList subTypeNames(originalSubTypes.split(QLatin1Char(';'), compat::SkipEmptyParts));
             QStringList subTypeValues;
             foreach (int subTypeValue, PhoneNumber::subTypeList(subTypeNames)) {
                 subTypeValues.append(QString::number(subTypeValue));
